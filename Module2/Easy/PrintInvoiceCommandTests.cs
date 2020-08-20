@@ -40,9 +40,10 @@ namespace TestableCodeDemos.Module2.Easy
                 .Returns(Date);
 
             _command = new PrintInvoiceCommand(
-                _mockDatabase.Object,
-                _mockPrinter.Object,
-                _mockDateTime.Object);
+                    _mockDatabase.Object,
+                    _mockPrinter.Object,
+                    _mockDateTime.Object
+                );
         }
 
         [Test]
@@ -64,7 +65,7 @@ namespace TestableCodeDemos.Module2.Easy
                 .Verify(p => p.WriteLine("Total: $1.23"),
                     Times.Once);
         }
-
+        
         [Test]
         public void TestExecuteShouldPrintTodaysDate()
         {
