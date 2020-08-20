@@ -45,13 +45,13 @@ namespace TestableCodeDemos.Module2.Easy
         [TestCase("Invoice ID: 1")]
         [TestCase("Total: $4.50")]
         [TestCase("Printed: 2/3/2001")]
-        public void TestExecuteShouldPrintLine(string line)
+        public void TestExecuteShoulPrintLine(string line)
         {
             _command.Execute(InvoiceId);
 
             _mocker.GetMock<IPrinter>()
-                .Verify(p => p.WriteLine(line),
-                    Times.Once);
+                .Verify(p => p.WriteLine(line), Times.Once);
+
         }
     }
 }
