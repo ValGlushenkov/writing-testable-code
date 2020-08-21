@@ -9,6 +9,7 @@ namespace TestableCodeDemos.Module3.Extras
 {
     public class Program3
     {
+        //Using Ninject IoC container
         static void Main(string[] args)
         {
             var container = new StandardKernel();
@@ -30,6 +31,7 @@ namespace TestableCodeDemos.Module3.Extras
             var command = container.Get<PrintInvoiceCommand>();
 
             command.Execute(invoiceId);
+
         }
     }
 }

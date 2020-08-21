@@ -11,11 +11,12 @@ namespace TestableCodeDemos.Module3.Extras
         public PrintInvoiceCommand Create()
         {
             var command = new PrintInvoiceCommand(
-                new Database(),
-                new InvoiceWriter(
-                    new Printer(),
-                    new PageLayout()));
-
+                    new Database(),
+                    new InvoiceWriter(
+                        new Printer(),
+                        new PageLayout()
+                        )
+                );
             return command;
         }
     }

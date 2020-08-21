@@ -9,10 +9,12 @@ namespace TestableCodeDemos.Module3.Extras
 {
     public class Program4
     {
+        //Using Ninject to bind all classes in the assembly to default interfaces
         static void Main(string[] args)
         {
             var container = new StandardKernel();
-
+            //Classees and Interfaces must share the same name excluding "I" prefix.
+            
             container.Bind(p =>
             {
                 p.FromThisAssembly()

@@ -8,6 +8,7 @@ namespace TestableCodeDemos.Module3.Extras
 {
     public class Program
     {
+        //simple Dependency Injection
         static void Main(string[] args)
         {
             var invoiceId = int.Parse(args[0]);

@@ -21,7 +21,7 @@ namespace TestableCodeDemos.Module3.Easy
         public void SetUp()
         {
             _invoice = new Invoice()
-            {
+            { 
                 Id = 1,
                 IsOverdue = false
             };
@@ -41,11 +41,11 @@ namespace TestableCodeDemos.Module3.Easy
 
             _mocker.GetMock<IPrinter>()
                 .Verify(p => p.SetPageLayout(layout),
-                    Times.Once);
+                Times.Once);
         }
 
         [Test]
-        public void TestWriteShouldPrintOverdueInvoiceInRed()
+        public void TestWriteShouldPrintOverdueInvoiceRed()
         {
             _invoice.IsOverdue = true;
 
@@ -53,7 +53,7 @@ namespace TestableCodeDemos.Module3.Easy
 
             _mocker.GetMock<IPrinter>()
                 .Verify(p => p.SetInkColor("Red"),
-                    Times.Once);
+                Times.Once);
         }
 
         [Test]
@@ -62,20 +62,19 @@ namespace TestableCodeDemos.Module3.Easy
             _writer.Write(_invoice);
 
             _mocker.GetMock<IPrinter>()
-                .Verify(p => p.SetInkColor(It.IsAny<string>()),
-                    Times.Never);
+                .Verify(p => p.SetInkColor(It.IsAny<string>()), 
+                Times.Never);
         }
 
-        [Test]
+        [Test]   
         [TestCase("Invoice ID: 1")]
-        // Remaining test cases would go here
         public void TestWriteShouldPrintInvoiceNumber(string line)
         {
             _writer.Write(_invoice);
 
             _mocker.GetMock<IPrinter>()
                 .Verify(p => p.WriteLine(line), 
-                    Times.Once());
-        }        
+                Times.Once);
+        }
     }
 }
