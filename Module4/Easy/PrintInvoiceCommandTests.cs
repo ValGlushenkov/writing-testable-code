@@ -22,7 +22,7 @@ namespace TestableCodeDemos.Module4.Easy
         public void SetUp()
         {
             _invoice = new Invoice();
-
+            
             _mocker = new AutoMoqer();
 
             _mocker.GetMock<IDatabase>()
@@ -42,8 +42,8 @@ namespace TestableCodeDemos.Module4.Easy
             _command.Execute(InvoiceId);
 
             _mocker.GetMock<IInvoiceWriter>()
-                .Verify(p => p.Write(_invoice),
-                    Times.Once);
+                .Verify(p => p.Write(_invoice), 
+                Times.Once);
         }
 
         [Test]
@@ -51,8 +51,7 @@ namespace TestableCodeDemos.Module4.Easy
         {
             _command.Execute(InvoiceId);
 
-            Assert.That(_invoice.LastPrintedBy,
-                Is.EqualTo(UserName));
+            Assert.That(_invoice.LastPrintedBy, Is.EqualTo(UserName));
         }
 
         [Test]
@@ -61,8 +60,7 @@ namespace TestableCodeDemos.Module4.Easy
             _command.Execute(InvoiceId);
 
             _mocker.GetMock<IDatabase>()
-                .Verify(p => p.Save(),
-                    Times.Once);
+                .Verify(p => p.Save(), Times.Once);
         }
     }
 }
