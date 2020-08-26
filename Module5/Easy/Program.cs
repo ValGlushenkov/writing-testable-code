@@ -15,12 +15,13 @@ namespace TestableCodeDemos.Module5.Easy
             var container = new StandardKernel();
 
             container.Bind(p =>
-            {
-                p.FromThisAssembly()
-                    .SelectAllClasses()
-                    .BindDefaultInterface();
-            });
+                {
+                    p.FromThisAssembly()
+                        .SelectAllClasses()
+                        .BindDefaultInterface();
+                });
 
+            //override binding on the top to a singleton
             container.Bind<ISecurity>()
                 .To<Security>()
                 .InSingletonScope();

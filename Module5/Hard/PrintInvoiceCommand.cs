@@ -22,7 +22,7 @@ namespace TestableCodeDemos.Module5.Hard
         {
             var invoice = _database.GetInvoice(invoiceId);
 
-            var security = Security.GetInstance();
+            var security = Security.GetInstance();//Singleton
 
             if (!security.IsAdmin())
                 throw new UserNotAuthorizedException();
