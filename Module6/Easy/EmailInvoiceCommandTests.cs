@@ -23,7 +23,7 @@ namespace TestableCodeDemos.Module6.Easy
         [SetUp]
         public void SetUp()
         {
-            _invoice = new Invoice()
+            _invoice = new Invoice() 
             {
                 EmailAddress = EmailAddress
             };
@@ -40,9 +40,7 @@ namespace TestableCodeDemos.Module6.Easy
         [Test]
         public void TestExecuteForInvoiceWithNoEmailAddressShouldThrowException()
         {
-            _invoice.EmailAddress = string.Empty;
-
-            Assert.That(() => _command.Execute(InvoiceId), 
+            Assert.That(() => _command.Execute(InvoiceId),
                 Throws.TypeOf<EmailAddressIsBlankException>());
         }
 
@@ -53,7 +51,7 @@ namespace TestableCodeDemos.Module6.Easy
 
             _mocker.GetMock<IInvoiceEmailer>()
                 .Verify(p => p.Email(_invoice),
-                    Times.Once);
+                Times.Once);
         }
     }
 }
